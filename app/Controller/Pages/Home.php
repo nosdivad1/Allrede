@@ -24,7 +24,12 @@ class Home extends Page
 
         ]);
 
-        //RETORNA A VIEW DA PAGINA
-        return parent::getPage('HOME WDEV', $content);
+        //RETORNA O JSON DE BOAS VINDAS
+
+        header("Content-Type: application/json", true);
+        return json_encode([
+            "status" => "success",
+            "mensagem" => "isso é uma api"
+        ], JSON_UNESCAPED_UNICODE);
     }
 }

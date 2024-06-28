@@ -31,3 +31,11 @@ $obRouter->post('/depoimentos', [
         return new Response(200, Pages\Testimony::insertTestimony($request));
     }
 ]);
+
+//ROTA DE CLIENTES CANCELADOS (insert)
+$obRouter->get('/cancelados', [
+    function ($request) {
+
+        return new Response(200, Pages\Cancelados::getClientes($request));
+    }
+]);
