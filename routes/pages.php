@@ -39,3 +39,9 @@ $obRouter->get('/cancelados', [
         return new Response(200, Pages\Cancelados::getClientes($request));
     }
 ]);
+
+$obRouter->get('/generatelink', [
+    function ($request) {
+        return new Response(200, Pages\GenerateShortLink::generateIndexcShortLink($request));
+    }
+]);
