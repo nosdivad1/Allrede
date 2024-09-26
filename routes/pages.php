@@ -45,3 +45,9 @@ $obRouter->get('/generatelink', [
         return new Response(200, Pages\GenerateShortLink::generateIndexcShortLink($request));
     }
 ]);
+
+$obRouter->get('/bemobi', [
+    function ($request) {
+        return new Response(200, Pages\Faturas::getFaturas($request));
+    }
+]);

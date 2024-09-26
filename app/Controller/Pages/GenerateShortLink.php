@@ -84,9 +84,11 @@ class GenerateShortLink extends Page
         $email = $dados_do_cliente['email_principal'];
         $servico_selecionado = $response['clientes'][0]['servicos'][$_GET['servico'] - 1];
         $plano = $servico_selecionado['nome'];
+        $valor_do_plano = $dados_do_cliente['servicos'][$_GET['servico'] - 1]['valor'];
         $data_cadastro = $servico_selecionado['data_cadastro'];
         $uf = $dados_do_cliente['servicos'][$_GET['servico'] - 1]['endereco_fiscal']['estado'];
         $cidade = $dados_do_cliente['servicos'][$_GET['servico'] - 1]['endereco_fiscal']['cidade'];
+        $bairro = $response['clientes'][0]['servicos'][$_GET['servico'] - 1]['endereco_fiscal']['bairro'];
         $tipo_pessoa = $dados_do_cliente['tipo_pessoa'];
         $cod_cliente = $dados_do_cliente['id_cliente'];
         $data_nascimento = $dados_do_cliente['data_nascmento'];
@@ -115,7 +117,7 @@ class GenerateShortLink extends Page
 
 
         //DEFINE A URL, O TIPO DE REQUISIÇÃO E O BODY DA REQUISIÇÃO
-        $url = "https://indecx.com/v3/integrations/actions/K1A4CKHP/invites";
+        $url = "https://indecx.com/v3/integrations/actions/J77LPF7Q/invites";
         $type = "POST";
         $body =
             '{
@@ -125,12 +127,14 @@ class GenerateShortLink extends Page
                 "nome_razaosocial":"' . $nome_razaosocial . '",
                 "genero":"' . $genero . '",
                 "plano":"' . $plano . '",
+                "Valor_do_Plano":"' . $valor_do_plano . '",
                 "cpf_cnpj":"' . $documento . '",
                 "email":"' . $email . '",
                 "telefone":"' . $telefone . '",
                 "data_habilitação":"' . $data_cadastro . '",
                 "UF":"' . $uf . '",
                 "Cidade":"' . $cidade . '",
+                "Bairro":"' . $bairro . '",
                 "Tipo_pessoa":"' . $tipo_pessoa . '",
                 "Código_cliente":"' . $cod_cliente . '",
                 "Data_nascimento":"' . $data_nascimento . '"
